@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const { AccessToken } = require("livekit-server-sdk");
 const cors = require("cors");
