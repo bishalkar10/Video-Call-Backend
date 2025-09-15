@@ -3,10 +3,10 @@ const { AccessToken } = require("livekit-server-sdk");
 const cors = require("cors");
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
-const API_KEY = "devkey";
-const API_SECRET = "secret";
+const API_KEY = process.env.LIVEKIT_API_KEY;
+const API_SECRET = process.env.LIVEKIT_API_SECRET;
 
 app.use(
   cors({
@@ -49,5 +49,6 @@ app.post("/generate-token", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
+
