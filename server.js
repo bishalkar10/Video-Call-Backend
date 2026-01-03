@@ -18,6 +18,10 @@ app.use(
 
 app.use(express.json());
 
+app.get("/ping", (_, res) => {
+  res.send("pong");
+})
+
 app.post("/generate-token", async (req, res) => {
   const { roomName, participantName } = req.body;
 
