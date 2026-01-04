@@ -18,10 +18,6 @@ app.use(
 
 app.use(express.json());
 
-app.get("/ping", (_, res) => {
-  res.send("pong");
-})
-
 app.post("/generate-token", async (req, res) => {
   const { roomName, participantName } = req.body;
 
@@ -54,7 +50,12 @@ app.post("/generate-token", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// Perform valid execution check 
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+module.exports = app;
 
